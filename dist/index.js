@@ -54312,9 +54312,9 @@ function Editor({roomId: roomId2}) {
   return /* @__PURE__ */ React61.createElement("div", {
     className: "tldraw"
   }, /* @__PURE__ */ React61.createElement(Kle, __assign(__assign({
-    showPages: false
+    showPages: true
   }, events), {
-    disableAssets: true,
+    disableAssets: false,
     showMultiplayerMenu: false
   })));
 }
