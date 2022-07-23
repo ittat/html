@@ -54116,7 +54116,7 @@ var _hooks = createRoomContext("__legacy");
 // src/multiplayer/liveblocks.config.ts
 var client = createClient({
   publicApiKey: "pk_live_MQyewokvyPeZAt4CaE5u7o5u",
-  throttle: 80
+  throttle: 120
 });
 var {RoomProvider, useHistory, useRedo, useUndo, useRoom, useUpdateMyPresence} = createRoomContext(client);
 
