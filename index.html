@@ -1,64 +1,40 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>这是《title》</title>
-
-<!-- <meta property="og:type" content="website" />
-<meta property="og:title" content="test livestream 20210825-720p" />
-<meta name="description" property="og:description" content=" " />
-<meta property="og:image" content="https://wemeet-1302608036.file.myqcloud.com/ams/20201202/085102540082924216965.png" />
-<meta name="twitter:card" content="summary" /> -->
-    
-    <meta property="og:type" content="video" />
-<meta property="og:url" content="http://video.sina.com.cn/v/b/93544804-2282043583.html" />
-<meta property="og:title" content="微博UDC圣诞贺岁视频首发" />
-<meta property="og:description" content="【微博UDC圣诞贺岁视频首发！—微博带你分享微快乐！】还有几个小时，圣诞节就要到啦！末日后的第一个圣诞大家准备怎样度过呢？2012我要新花样！！！！~赶快动手制作一个圣诞 pinhole camera!! 和你最亲近的那个TA一起分享微快乐吧！！！" />
-<meta property="og:image" content="http://ww2.sinaimg.cn/bmiddle/880538bfjw1e04w8ktfakj.jpg " />
-<meta name="weibo:video:embed_code" content="http://you.video.sina.com.cn/api/sinawebApi/outplayrefer.php/vid=93544804_2282043583_OB21THcwCDTK+l1lHz2stqkP7KQNt6nni2K2u1anIAZaQ0/XM5GQYdgD5CHWBNkEqDhATZs6cfou1xk/s.swf" />
-
-
-</head>
-<body>
-    mobile浏览器唤起分享测试：
-    <div>
-        <button onclick="share()">浏览器原生分享 </button>
-<!--           <button onclick="schematw()">直接通过 Schema 唤起推特 app 发贴</button>
-         <button onclick="schemafb()">直接通过 Schema 唤起fb app 发贴</button> -->
-        
-        
-        <script>
-            
-//           window.location.href= "fb://faceweb/f?href=https%3A%2F%2Fm.facebook.com%2Fsharer.php%3Fu%3Dhttp%3A%2F%2Fwww.google.com"
-//             window.location.href= "fb://facewebmodal/https%3A%2F%2Fm.facebook.com%2Fsharer.php%3Fu%3Dhttp%3A%2F%2Fwww.google.com"
-//            window.location.href=   "twitter://post?message=www.google.com"
-            function share(){
-
-                        navigator.share({
-  title: '自定义标题',
-  text: '自定义文本',
-  url: 'https://eventmf-uat.messefrankfurt-event.com/vp_event/SharePage?shareType=VIDEO&shareParams=videoId%3D86439108037054464%26lang%3Dzh-HK ',
-}).then((r)=>{window.alert(JSON.stringify(r))}).catch((e)=>{window.alert(JSON.stringify(e))});
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>判断手机是否安装微信</title>
+    </head>
+    <body>
+    <a href="javascript:testApp('weixin://')" class="dl-btn" id="download">打开微信</a>
+    <script>
+    function testApp(url) {
+          var timeout, t = 1000, hasApp = true;
+          setTimeout(function () {
+            if (!hasApp) {
+                //没有安装微信
+                var r=confirm("您没有安装微信，请先安装微信!");
+                if (r==true){
+                    location.href="http://weixin.qq.com/"
+                }
+            }else{
+                //安装微信
             }
-            
-            
-  
-            
-                        function schemafb(){
-//                  window.location.href=   "fb://publish/?text=some_text_to_post"
-//                               window.location.href=   "fb://messaging/compose"
-                            window.location.href="fb-messenger://share/?link=https%3A%2F%2Fm.facebook.com%2Fsharer.php%3Fu%3Dhttp%3A%2F%2Fwww.google.com"
-                          
-            }
-            
-            
-            
-                function schematw(){
-                 window.location.href=   "twitter://post?message=www.google.com"
-            }
+            document.body.removeChild(ifr);
+          }, 2000)
 
-            </script>
-    </div>
-</body>
+          var t1 = Date.now();
+          var ifr = document.createElement("iframe");
+          ifr.setAttribute('src', url);
+          ifr.setAttribute('style', 'display:none');
+          document.body.appendChild(ifr);
+          timeout = setTimeout(function () {
+             var t2 = Date.now();
+             if (!t1 || t2 - t1 < t + 100) {
+               hasApp = false;
+             }
+          }, t);
+        }
+    </script>
+    </body>
 </html>
